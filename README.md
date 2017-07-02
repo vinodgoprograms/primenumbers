@@ -22,8 +22,9 @@ go version go1.8.3 darwin/amd64
 # TODOs
  I have identified few todos to complete, which will addressed over Monday or Tuesday. 
  
- - create an error consts and fix the return codes accordingly.
+ - fix the return codes.
  - fix relative path in the imports
  - couple of TODOs identified in the code.
- - more test cases.
+ - add more test cases.
+ - add comments in code.
 
