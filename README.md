@@ -19,4 +19,11 @@ All code (excluding any external dependencies) should be committed to a GitHub r
 import "github.com/go-redis/redis"
 go version go1.8.3 darwin/amd64
 
+# TODOs
+ I have identified few todos to complete, which will addressed over Monday or Tuesday. 
+ 
+ - create an error consts and fix the return codes accordingly.
+ - fix relative path in the imports
+ - couple of TODOs identified in the code.
+ - more test cases.
 
