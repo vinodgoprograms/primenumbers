@@ -6,9 +6,9 @@ import "strconv"
 import "os"
 import "io"
 import "io/ioutil"
-import "../redisConnection"
-import "../generatePrimes"
-import "../processPrimes"
+import "github.com/vinodgoprograms/primenumbers/redisConnection"
+import "github.com/vinodgoprograms/primenumbers/generatePrimes"
+import "github.com/vinodgoprograms/primenumbers/processPrimes"
 
 func TestGenerateAndStore(t *testing.T) {
 	fmt.Println("Testing GenerateAndStore..")
