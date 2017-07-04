@@ -1,27 +1,41 @@
+/* 
+Package used to process the generated prime numbers
+*/
 package processPrimes
 
 import (
-	"../redisConnection"
+	"github.com/vinodgoprograms/primenumbers/redisConnection"
 	"fmt"
 	"os"
 )
+//Internal function
+//reads two integers and process the prime numbers fall between them
+func readInput(inStream *os.File) (int, int) {
 
-func readInput(in *os.File) (int, int) {
-
-	if in == nil {
-		in = os.Stdin
+	if inStream == nil {
+		inStream = os.Stdin
 	}
 	var low int
 	var high int
 	fmt.Print("Enter a lower bound: ")
-	fmt.Fscanf(in, "%d", &low)
+	fmt.Fscanf(inStream, "%d", &low)
 	fmt.Print("Enter an upper bound: ")
-	fmt.Fscanf(in, "%d", &high)
+	fmt.Fscanf(inStream, "%d", &high)
 	//fmt.Println(low, high)
 	return low, high
 
 }
-func ComputeSumAndMean(in *os.File) (int, int64, int64) {
+/*
+Function to compute sum and mean of all the prime numbers between two integers.
+
+Input:
+ inStream - input stream to read the inputs from.
+Output:
+ result: 0 (Success) -1 (Failure)
+ sum: sum of all prime numbers between the two integers read from input
+ mean: mean of all prime numbers between the two integers read from input
+*/
+func ComputeSumAndMean(inStream *os.File) (int, int64, int64) {
 
 	var sum int64
 	var mean int64
@@ -35,7 +49,7 @@ func ComputeSumAndMean(in *os.File) (int, int64, int64) {
 		return -1, 0, 0
 	}
 	for {
-		low, high := readInput(in)
+		low, high := readInput(inStream)
 
 		//sum and mean will return previously values
 		//this is to make the test cases work
