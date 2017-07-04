@@ -1,8 +1,12 @@
+/* Main package
+   
+   Generate prime numbers and computes sum and mean, based on supplied inputs. Please refer to README.md for details.
+*/
 package main
 
 import (
-	"./generatePrimes"
-	"./processPrimes"
+	"github.com/vinodgoprograms/primenumbers/generatePrimes"
+	"github.com/vinodgoprograms/primenumbers/processPrimes"
 	"fmt"
 	"math"
 	"os"
