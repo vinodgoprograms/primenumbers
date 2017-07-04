@@ -1,10 +1,21 @@
+/*Generate prime numbers and store them in redis.
+The generated prime numbers are stored under the key  "max"
+and the prime numbers are stored under the key "primes".
+*/
 package generatePrimes
 
 import (
-	"../redisConnection"
+	"github.com/vinodgoprograms/primenumbers/redisConnection"
 	"fmt"
 )
 
+/*This external function is used to generate prime numbers under the 
+given number. The generated values will be stored in a redis db
+
+Input: Integer
+Output:
+  0 - SUCCESS
+ -1 - ERROR */
 func GenerateAndStore(primeUnder int) int {
 
 	primesList := generatePrimes(primeUnder)
@@ -20,7 +31,10 @@ func GenerateAndStore(primeUnder int) int {
 	fmt.Println("Error: Failed to store in redis")
 	return -1
 }
-
+//internal function 
+//used to generate prime numbers
+//Input: Integer
+//Returns: array of prime numbers
 func generatePrimes(primeUnder int) []int {
 	result := make([]int, 0)
 
@@ -41,7 +55,12 @@ func generatePrimes(primeUnder int) []int {
 	return result
 
 }
-
+//internal function 
+//used to store prime numbers and max integer in redis
+//Input: Integer, Array of integers
+//Returns: 
+//0 - On Success
+//-1 - On Failure
 func storeInRedis(primeUnder int, primesList []int) int {
 
 	client := redisConnection.GetRedisClient()
@@ -54,7 +73,6 @@ func storeInRedis(primeUnder int, primesList []int) int {
 	primesKey := redisConnection.PrimesKey
 	client.Set(maxKey, primeUnder, 0)
 
-	//TODO Check SetBit failures
 	for i := 0; i < primeUnder; i++ {
 		client.SetBit(primesKey, int64(i), 0)
 	}
